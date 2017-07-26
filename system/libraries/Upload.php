@@ -1001,8 +1001,10 @@ class CI_Upload {
 
 		if ( ! is_dir($this->upload_path))
 		{
-			$this->set_error('upload_no_filepath', 'error');
-			return FALSE;
+			// if dir not exist,make it.
+			mkdir($this->upload_path, 0777, true);
+			//$this->set_error('upload_no_filepath', 'error');
+			//return FALSE;
 		}
 
 		if ( ! is_really_writable($this->upload_path))
